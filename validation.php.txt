@@ -1,0 +1,20 @@
+<?php 
+session_start();
+$username=$_post('username');
+$password=$_post('password');
+$con=mysqli_connect('localhost','root');
+mysqli_select_db($con,'login db');
+$q="select * from loginform where username='$username' && password='$password'";
+$r=mysqli_query($con,$q);
+mysqli_num_rows($r);
+if($num==1)
+{
+$_session['username']=$username;
+header('location:http://localhost/jaspal/home.php');
+}
+else
+{
+header('location:http://localhost/jaspal/home.php');
+}
+?>
+
